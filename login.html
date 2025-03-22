@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - BarangKita</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Bagian Kiri: Informasi Aplikasi -->
+      <div class="app-info">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img src="barangkita.png" alt="Logo BarangKita" class="logo" />
+        </div>
+        <!-- Nama Aplikasi dan Deskripsi -->
+        <h1 class="app-name">BarangKita</h1>
+        <p class="app-description">
+          Selamat datang di aplikasi pengelolaan inventaris barang. Silakan
+          login untuk melanjutkan.
+        </p>
+      </div>
+
+      <!-- Bagian Kanan: Form Login -->
+      <div class="login-form">
+        <h2>LOGIN</h2>
+        <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Masukkan username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan password"
+              required
+            />
+          </div>
+          <button type="submit" class="login-button">LOGIN</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
