@@ -198,3 +198,21 @@ body {
     padding-right: 100px; /* Sesuaikan padding untuk layar kecil */
   }
 }
+
+/* Styling untuk Register Link */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.register-link a {
+  color: #03318c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
