@@ -1,0 +1,107 @@
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* Navbar default (desktop) */
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .nav-links li {
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #555;
+    }
+
+    .nav-links a .icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .nav-links a .text {
+      font-size: 14px;
+    }
+
+    /* Responsive untuk mobile */
+    @media screen and (max-width: 768px) {
+      /* Pindahkan navbar ke bawah */
+      .navbar {
+        top: auto;
+        bottom: 0;
+      }
+
+      /* Hanya tampilkan ikon */
+      .nav-links a .text {
+        display: none;
+      }
+
+      /* Sesuaikan padding */
+      .nav-links a {
+        padding: 8px;
+      }
+    }
+  </style>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li>
+        <a href="#dashboard">
+          <span class="icon">🏠</span>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#inventaris">
+          <span class="icon">📦</span>
+          <span class="text">Inventaris</span>
+        </a>
+      </li>
+      <li>
+        <a href="#peminjaman">
+          <span class="icon">📥</span>
+          <span class="text">Peminjaman</span>
+        </a>
+      </li>
+      <li>
+        <a href="#profile">
+          <span class="icon">👤</span>
+          <span class="text">Profil</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <script>
+    // Tambahkan script tambahan jika diperlukan
+  </script>
+    <!-- Akhir Navbar -->
