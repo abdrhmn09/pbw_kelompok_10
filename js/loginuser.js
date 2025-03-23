@@ -74,7 +74,7 @@ loginForm.addEventListener("submit", (e) => {
     // Contoh validasi sederhana untuk user
     if (username && password) {
       alert("Login berhasil! Redirecting...");
-      window.location.href = "user-dashboard.html"; // Redirect ke halaman user dashboard
+      window.location.href = "/pages/Userdashboard.html"; // Redirect ke halaman user dashboard
     } else {
       showError("Username atau password salah!");
     }
