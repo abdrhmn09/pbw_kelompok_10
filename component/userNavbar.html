@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
 <style>
   /* Reset CSS */
   * {
@@ -10,7 +13,7 @@
   /* Navbar Container */
   .navbar {
     background: linear-gradient(135deg, #1a237e, #0d47a1);
-    color: #FFFFFF;
+    color: #ffffff;
     width: 100%;
     height: 65px;
     position: fixed;
@@ -20,8 +23,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-links {
@@ -44,7 +47,7 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     padding: 12px 10px;
     transition: all 0.3s ease;
     position: relative;
@@ -52,8 +55,8 @@
   }
 
   .nav-links a:hover {
-    color: #FFFFFF;
-    background: rgba(255,255,255,0.05);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .nav-links a.active {
@@ -90,19 +93,25 @@
     font-weight: bold;
     min-width: 18px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     animation: pulsate 1.5s infinite;
   }
 
   @keyframes pulsate {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   /* Active Indicator */
   .nav-links a::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -123,7 +132,7 @@
       top: auto;
       bottom: 0;
       height: 60px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       border-bottom: none;
     }
 
@@ -154,13 +163,13 @@
 <nav class="navbar">
   <ul class="nav-links">
     <li>
-      <a href="/pages/Userdashboard.html" class="active">
+      <a href="/pages/Userdashboard.html">
         <i class="fas fa-home icon"></i>
         <span class="text">Dashboard</span>
       </a>
     </li>
     <li>
-      <a href="/pages/">
+      <a href="/pages/inventaris.html">
         <i class="fas fa-boxes icon"></i>
         <span class="text">Inventaris</span>
       </a>
@@ -173,14 +182,14 @@
       </a>
     </li>
     <li>
-      <a href="#notifikasi">
+      <a href="/pages/notifikasi.html">
         <i class="fas fa-bell icon"></i>
         <span class="text">Notifikasi</span>
         <span class="badge">3</span>
       </a>
     </li>
     <li>
-      <a href="#profile">
+      <a href="/pages/profil.html">
         <i class="fas fa-user-circle icon"></i>
         <span class="text">Profil</span>
       </a>
@@ -189,23 +198,34 @@
 </nav>
 
 <script>
-  // Tambahkan efek aktif pada menu yang diklik
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
+  // Fungsi untuk menandai link aktif berdasarkan URL saat ini
+  function markActiveNavLink() {
+    const currentPage = window.location.pathname.split("/").pop(); // Ambil nama file dari URL
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach((link) => {
+      const linkHref = link.getAttribute("href").split("/").pop(); // Ambil nama file dari href
+      if (linkHref === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
     });
-  });
+  }
+
+  // Panggil fungsi saat halaman dimuat
+  document.addEventListener("DOMContentLoaded", markActiveNavLink);
 
   // Simulasi notifikasi real-time (contoh)
   setInterval(() => {
-    const badge = document.querySelector('.badge');
-    const count = parseInt(badge.textContent) + 1;
-    badge.textContent = count > 9 ? '9+' : count;
-    badge.style.animation = 'none';
-    void badge.offsetWidth; // Trigger reflow
-    badge.style.animation = 'pulsate 1.5s infinite';
+    const badges = document.querySelectorAll(".badge");
+    badges.forEach((badge) => {
+      const count = parseInt(badge.textContent) + 1;
+      badge.textContent = count > 9 ? "9+" : count;
+      badge.style.animation = "none";
+      void badge.offsetWidth; // Trigger reflow
+      badge.style.animation = "pulsate 1.5s infinite";
+    });
   }, 10000);
 </script>
 <!-- Akhir Navbar -->
