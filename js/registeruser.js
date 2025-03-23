@@ -1,5 +1,36 @@
+// Ambil elemen-elemen yang dibutuhkan
+const loginForm = document.querySelector(".login-form form");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const loginButton = document.querySelector(".login-button");
+
+// Fungsi untuk menampilkan pesan error
+function showError(message) {
+  const errorElement = document.createElement("div");
+  errorElement.className = "error-message";
+  errorElement.textContent = message;
+  loginForm.appendChild(errorElement);
+
+  // Hapus pesan error setelah 3 detik
+  setTimeout(() => {
+    errorElement.remove();
+  }, 3000);
+}
+
+// Fungsi untuk menampilkan animasi loading
+function showLoading() {
+  loginButton.textContent = "Loading...";
+  loginButton.disabled = true;
+}
+
+// Fungsi untuk menyembunyikan animasi loading
+function hideLoading() {
+  loginButton.textContent = "LOGIN";
+  loginButton.disabled = false;
+}
+
 // Fungsi untuk toggle password visibility
-function togglePasswordVisibility(passwordInput) {
+function togglePasswordVisibility() {
   const toggleButton = document.createElement("button");
   toggleButton.type = "button";
   toggleButton.textContent = "👁️"; // Teks default
@@ -20,24 +51,35 @@ function togglePasswordVisibility(passwordInput) {
   });
 }
 
-// Terapkan fungsi togglePasswordVisibility ke kedua input password
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirm-password");
+// Event listener untuk form login
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Mencegah form submit default
 
-togglePasswordVisibility(passwordInput);
-togglePasswordVisibility(confirmPasswordInput);
+  // Validasi input
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
 
-// Validasi form register
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (event) {
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
+  if (!username || !password) {
+    showError("Username dan password tidak boleh kosong!");
+    return;
+  }
 
-    if (password !== confirmPassword) {
-      alert("Password dan Konfirmasi Password tidak cocok!");
-      event.preventDefault();
+  // Tampilkan animasi loading
+  showLoading();
+
+  // Simulasi proses login (bisa diganti dengan AJAX/Fetch API)
+  setTimeout(() => {
+    hideLoading();
+
+    // Contoh validasi sederhana untuk user
+    if (username && password) {
+      alert("Login berhasil! Redirecting...");
+      window.location.href = "user-dashboard.html"; // Redirect ke halaman user dashboard
     } else {
-      alert("Registrasi berhasil!");
+      showError("Username atau password salah!");
     }
-  });
+  }, 2000); // Simulasi delay 2 detik
+});
+
+// Panggil fungsi toggle password visibility
+togglePasswordVisibility();
