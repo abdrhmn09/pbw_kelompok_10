@@ -3,33 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register - BarangKita</title>
-    <link rel="stylesheet" href="/css/registeruser.css" />
+    <title>Login - BarangKita</title>
+    <link rel="stylesheet" href="loginuser.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script src="loginuser.js" defer></script>
   </head>
   <body>
-    <div class="register-container">
+    <div class="login-container">
       <!-- Bagian Kiri: Informasi Aplikasi -->
       <div class="app-info">
         <!-- Logo -->
         <div class="logo-container">
-          <img src="/asset/barangkita.png" alt="Logo BarangKita" class="logo" />
+          <img src="barangkita.png" alt="Logo BarangKita" class="logo" />
         </div>
         <!-- Nama Aplikasi dan Deskripsi -->
         <h1 class="app-name">BarangKita</h1>
         <p class="app-description">
-          Selamat datang di BarangKita! Buat akun baru dan mulai kelola
-          inventaris barang Anda dengan mudah.
+          Selamat datang di BarangKita! Kelola inventaris barang dengan mudah
+          dan efisien. Login sekarang dan mulai mengelola tanpa ribet!
         </p>
       </div>
 
-      <!-- Bagian Kanan: Form Register -->
-      <div class="register-form">
-        <h2>REGISTER</h2>
-        <form id="registerForm">
+      <!-- Bagian Kanan: Form Login -->
+      <div class="login-form">
+        <h2>LOGIN</h2>
+        <form>
           <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -41,49 +42,23 @@
             />
           </div>
           <div class="form-group">
-            <label for="phone">Nomor Handphone</label>
+            <label for="password">Password</label>
             <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Masukkan nomor handphone"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              title="Hanya angka yang diperbolehkan"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan password"
               required
             />
           </div>
-          <div class="form-group password-group">
-            <label for="password">Password</label>
-            <div class="password-input">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Masukkan password"
-                required
-              />
-            </div>
+          <button type="submit" class="login-button">LOGIN</button>
+          <div class="register-link">
+            <p>
+              Belum punya akun? <a href="register.html">Register di sini!</a>
+            </p>
           </div>
-          <div class="form-group password-group">
-            <label for="confirm-password">Konfirmasi Password</label>
-            <div class="password-input">
-              <input
-                type="password"
-                id="confirm-password"
-                name="confirm-password"
-                placeholder="Masukkan konfirmasi password"
-                required
-              />
-            </div>
-          </div>
-          <button type="submit" class="register-button">REGISTER</button>
-          <p class="login-link">
-            Sudah punya akun? <a href="login.html">Login di sini</a>
-          </p>
         </form>
       </div>
     </div>
-    <script src="/js/registeruser.js"></script>
   </body>
 </html>
