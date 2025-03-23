@@ -1,0 +1,189 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Container Utama */
+.register-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Bagian Kiri: Informasi Aplikasi */
+.app-info {
+  background-color: #03318c;
+  color: white;
+  padding: 60px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Container Logo */
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Nama Aplikasi */
+.app-name {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Deskripsi Aplikasi */
+.app-description {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* Bagian Kanan: Form Register */
+.register-form {
+  padding: 60px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-form h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #03318c;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.password-group {
+  position: relative;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #03318c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-button:hover {
+  background-color: #022a6e;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-link a {
+  color: #03318c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsif untuk Layar Kecil */
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .app-info {
+    padding: 40px;
+  }
+
+  .register-form {
+    padding: 40px;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .app-name {
+    font-size: 2rem;
+  }
+
+  .register-form h2 {
+    font-size: 1.8rem;
+  }
+}
