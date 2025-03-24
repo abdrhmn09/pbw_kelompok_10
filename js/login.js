@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Check credentials based on login type
         if (loginType === "admin") {
           if (username === "admin" && password === "admin123") {
-            showSuccess("dashboard.html");
+            showSuccess("/pages/adminDashboard.html");
           } else {
             showError("Username atau password admin salah!");
           }
