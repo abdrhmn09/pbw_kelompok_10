@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 
   /* Navbar Container */
@@ -62,7 +62,7 @@
   }
 
   .nav-links a:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -176,14 +176,14 @@
     gap: 12px;
     color: white;
   }
-  
+
   .app-brand img {
     width: 42px;
     height: auto;
     transition: transform 0.4s ease;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   }
-  
+
   .app-brand:hover img {
     transform: rotate(5deg) scale(1.05);
   }
@@ -338,8 +338,14 @@
 
   /* Animation for page transitions */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   body {
@@ -349,18 +355,24 @@
 
 <!-- Navbar -->
 <div class="mobile-header">
-  <span class="mobile-brand"><img src="/asset/barangkita.png" alt=""><p>Barang kita</p></span>
+  <span class="mobile-brand"
+    ><img src="/asset/barangkita.png" alt="" />
+    <p>Barang kita</p></span
+  >
   <div class="mobile-user">
     <i class="fas fa-user-circle"></i>
-    <span>John Doe</span>
+    <span>Admin</span>
   </div>
 </div>
 <nav class="navbar">
   <div class="brand-container">
-    <span class="app-brand"><img src="/asset/barangkita.png" alt=""><p>Barang kita</p></span>
+    <span class="app-brand"
+      ><img src="/asset/barangkita.png" alt="" />
+      <p>Barang kita</p></span
+    >
     <div class="user-profile">
       <i class="fas fa-user-circle"></i>
-      <span>Hi, John Doe</span>
+      <span>Hi, Admin</span>
     </div>
   </div>
   <ul class="nav-links">
@@ -380,7 +392,6 @@
       <a href="/pages/adminConfigMenu.html">
         <i class="fas fa-user-cog icon"></i>
         <span class="text">Pengaturan</span>
-        
       </a>
     </li>
     <li>
