@@ -7,4 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     markActiveNavLink(); // Call function to mark active link after navbar is loaded
     setupNavbarInteractions(); // Setup navbar interactions after navbar is loaded
     })
+
+    console.log("Halaman Aktivitas Terbaru dimuat.");
 });
