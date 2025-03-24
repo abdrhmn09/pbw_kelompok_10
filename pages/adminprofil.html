@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - Inventaris</title>
+    <!-- Add GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="/css/adminprofil.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+
+    <!-- Main Profile Content -->
+    <div class="profile-container">
+      <div class="profile-header">
+        <h1>Profile</h1>
+      </div>
+
+      <div class="profile-content">
+        <div class="profile-picture">
+          <img src="/asset/man.png" alt="Profile Picture" id="profileImage" />
+          <div class="user-name">Admin</div>
+          <button id="changeProfilePic" class="btn-edit">Edit Foto</button>
+          <div class="inventory-summary">
+            <h2>Barang yang Disimpan</h2>
+            <div class="inventory-details">
+              <p>Total Barang: <span id="totalItems">30</span></p>
+              <p>Barang Tersedia: <span id="availableItems">25</span></p>
+              <p>
+                User Meminjam Barang:
+                <span id="borrowedItems" class="borrowed">5</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <div class="info-item">
+            <label>Username:</label><span id="username">Admin</span>
+          </div>
+          <div class="info-item">
+            <label>Phone:</label><span id="phone">-</span>
+          </div>
+          <div class="info-item">
+            <label>Status:</label><span id="status">Aktif</span>
+          </div>
+          <div class="info-item">
+            <label>Email:</label><span id="email">-</span>
+          </div>
+          <div class="info-item">
+            <label>City:</label><span id="city">Banda Aceh</span>
+          </div>
+          <div class="info-item">
+            <label>Country:</label><span id="country">Indonesia</span>
+          </div>
+          <button id="editProfileBtn" class="btn-edit">Edit Profile</button>
+        </div>
+      </div>
+
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+
+    <script src="/js/adminprofil.js"></script>
+  </body>
+</html>
