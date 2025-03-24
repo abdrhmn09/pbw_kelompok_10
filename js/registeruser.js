@@ -313,3 +313,31 @@ document.addEventListener("DOMContentLoaded", function () {
     errorMessages.forEach((message) => message.remove());
   }
 });
+
+function addUserToAdminConfig() {
+  const user = {
+    fullname: fullnameInput.value,
+    phone: phoneInput.value,
+    username: usernameInput.value,
+    role: "Pengguna" // default role
+  };
+  let users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+  users.push(user);
+  localStorage.setItem("registeredUsers", JSON.stringify(users));
+}
+
+if (validateForm()) {
+  registerButton.classList.add("loading");
+  
+  // Tambahkan data registrasi ke localStorage untuk AdminConfigMenu
+  addUserToAdminConfig();
+
+  setTimeout(() => {
+    registerButton.classList.remove("loading");
+    const successContainer = document.querySelector(".register-success");
+    successContainer.classList.add("show");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 3000);
+  }, 2000);
+}

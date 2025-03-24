@@ -1,0 +1,138 @@
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: #f4f7fc;
+    padding-top: 80px; /* Untuk navbar fixed di atas */
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* Container Utama Config */
+  .config-container {
+    padding: 20px 40px;
+  }
+  
+  .config-container h1 {
+    color: #2b32b2;
+    margin-bottom: 20px;
+  }
+  
+  /* Tombol */
+  .btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 4px;
+  }
+  
+  .btn.primary {
+    background: linear-gradient(135deg, #2b32b2, #1488cc);
+    color: #fff;
+  }
+  
+  .btn.edit {
+    background: #ffc107;
+    color: #fff;
+  }
+  
+  .btn.delete {
+    background: #dc3545;
+    color: #fff;
+  }
+  
+  /* Tabel User */
+  #userTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #userTable th, #userTable td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  #userTable th {
+    background: #f1f5fa;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+  }
+  
+  .modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+  }
+  
+  .modal .close:hover {
+    color: #000;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    body {
+      padding-bottom: 80px;
+    }
+    .config-container {
+      padding: 20px;
+    }
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
