@@ -4,13 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile - Inventaris</title>
+    <!-- Add GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Your CSS -->
     <link rel="stylesheet" href="/css/profil.css" />
+    <!-- Navbar CSS (already included in navbar.html) -->
   </head>
   <body>
+    <!-- Navbar will be inserted here -->
     <header>
       <div id="navbar-container"></div>
     </header>
 
+    <!-- Main Profile Content -->
     <div class="profile-container">
       <!-- Header Profil -->
       <div class="profile-header">
@@ -23,7 +34,7 @@
         <div class="profile-picture">
           <img src="/asset/man.png" alt="Profile Picture" id="profileImage" />
           <div class="user-name">John Doe</div>
-          <button id="changeProfilePic">Edit Foto</button>
+          <button id="changeProfilePic" class="btn-edit">Edit Foto</button>
           <div class="inventory-summary">
             <h2>Barang yang Disimpan</h2>
             <div class="inventory-details">
@@ -63,13 +74,17 @@
             <label>Country:</label>
             <span id="country">Indonesia</span>
           </div>
-          <button id="editProfileBtn">Edit Profile</button>
+          <button id="editProfileBtn" class="btn-edit">Edit Profile</button>
         </div>
       </div>
 
       <!-- Tombol Logout -->
-      <button id="logoutBtn">Logout</button>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
     </div>
+
+    <!-- JavaScript -->
+    <script src="/js/navbar.js"></script>
+    <!-- If you have separate navbar JS -->
     <script src="/js/profil.js"></script>
   </body>
 </html>
