@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | Barang Kita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/UserDashboard.css">
 </head>
 <body>
@@ -14,25 +15,175 @@
         <!-- Header Section -->
         <section class="welcome-section">
             <div class="welcome-content">
-                <h1>Hi, <span id="username">John Doe</span> 👋</h1>
+                <h1>Hi, <span id="username">John Doe</span> <span class="wave">👋</span></h1>
+                <p class="welcome-subtitle">Selamat datang di dashboard inventaris Barang Kita</p>
+            </div>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Barang</h3>
+                        <p class="stat-value">124</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Dipinjam</h3>
+                        <p class="stat-value">8</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Riwayat</h3>
+                        <p class="stat-value">36</p>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="inventory-section">
-            <h2>Inventaris Barang</h2>
-            <div class="inventory-grid">
-              <!-- Item akan diisi oleh API -->
-              <div class="inventory-item">
-                <img src="https://image.benq.com/is/image/benqco/LH820ST-right30?$ResponsivePreset$&fmt=png-alpha" alt="Nama Barang" class="inventory-img">
-                <div class="inventory-info">
-                  <h3>Proyektor Epson</h3>
-                  <p>Stok: 5</p>
-                  <span class="status">Tersedia</span>
-                </div>
-              </div>
-              <!-- Item lainnya -->
+
+        <!-- Quick Access Section -->
+        <section class="quick-access-section">
+            <h2>Akses Cepat</h2>
+            <div class="quick-actions">
+                <a href="/pages/inventaris.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Cari Barang</h3>
+                </a>
+                <a href="/pages/html-peminjamanUser.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Pinjam Barang</h3>
+                </a>
+                <a href="/pages/profil.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Pengaturan</h3>
+                </a>
             </div>
-          </section>
+        </section>
+
+        <!-- Inventory Section -->
+        <section class="inventory-section">
+            <div class="section-header">
+                <h2>Inventaris Populer</h2>
+                <a href="/pages/inventaris.html" class="view-all">Lihat Semua <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="inventory-grid" id="inventory-container">
+                <!-- Items will be populated by JS/API -->
+                <div class="inventory-item">
+                    <div class="inventory-img-container">
+                        <img src="https://image.benq.com/is/image/benqco/LH820ST-right30?$ResponsivePreset$&fmt=png-alpha" alt="Proyektor Epson" class="inventory-img">
+                    </div>
+                    <div class="inventory-info">
+                        <h3>Proyektor Epson EB-X41</h3>
+                        <div class="inventory-details">
+                            <p><i class="fas fa-cubes"></i> Stok: <span class="stock-value">5</span></p>
+                            <span class="status available"><i class="fas fa-check-circle"></i> Tersedia</span>
+                        </div>
+                        <a href="#" class="borrow-btn">Pinjam</a>
+                    </div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-img-container">
+                        <img src="https://www.bhphotovideo.com/images/images2500x2500/canon_3976c002_eos_c300_mark_iii_1581518.jpg" alt="Kamera Video" class="inventory-img">
+                    </div>
+                    <div class="inventory-info">
+                        <h3>Canon EOS C300</h3>
+                        <div class="inventory-details">
+                            <p><i class="fas fa-cubes"></i> Stok: <span class="stock-value">2</span></p>
+                            <span class="status available"><i class="fas fa-check-circle"></i> Tersedia</span>
+                        </div>
+                        <a href="#" class="borrow-btn">Pinjam</a>
+                    </div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-img-container">
+                        <img src="https://m.media-amazon.com/images/I/71+P6YSaJBL.jpg" alt="Laptop" class="inventory-img">
+                    </div>
+                    <div class="inventory-info">
+                        <h3>MacBook Pro 16"</h3>
+                        <div class="inventory-details">
+                            <p><i class="fas fa-cubes"></i> Stok: <span class="stock-value">0</span></p>
+                            <span class="status not-available"><i class="fas fa-times-circle"></i> Habis</span>
+                        </div>
+                        <a href="#" class="borrow-btn disabled">Pinjam</a>
+                    </div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-img-container">
+                        <img src="https://www.bhphotovideo.com/images/images2500x2500/sony_wh_1000xm4_b_wh_1000xm4_wireless_noise_canceling_1577991.jpg" alt="Headphone" class="inventory-img">
+                    </div>
+                    <div class="inventory-info">
+                        <h3>Sony WH-1000XM4</h3>
+                        <div class="inventory-details">
+                            <p><i class="fas fa-cubes"></i> Stok: <span class="stock-value">8</span></p>
+                            <span class="status available"><i class="fas fa-check-circle"></i> Tersedia</span>
+                        </div>
+                        <a href="#" class="borrow-btn">Pinjam</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity Section -->
+        <section class="recent-activity-section">
+            <div class="section-header">
+                <h2>Aktivitas Terbaru</h2>
+                <a href="/pages/html-peminjamanUser.html" class="view-all">Lihat Semua <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Peminjaman Proyektor Epson</h4>
+                        <p class="activity-meta">2 jam yang lalu</p>
+                    </div>
+                    <div class="activity-status pending">
+                        <span>Menunggu</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Pengembalian Laptop Dell XPS</h4>
+                        <p class="activity-meta">Kemarin, 14:30</p>
+                    </div>
+                    <div class="activity-status completed">
+                        <span>Selesai</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Peminjaman Kamera Sony A7III</h4>
+                        <p class="activity-meta">3 hari yang lalu</p>
+                    </div>
+                    <div class="activity-status rejected">
+                        <span>Ditolak</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-<script src="/js/UserDashboard.js"></script>
+
+    <script src="/js/UserDashboard.js"></script>
 </body>
 </html>
