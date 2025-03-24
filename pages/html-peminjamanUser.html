@@ -7,17 +7,13 @@
     <link rel="stylesheet" href="/css/styles-peminjamanUser.css">
 </head>
 <body>
-    <nav>
-        <div class="dropdown">
-            <button id="dropdownToggle">Peminjaman </button>
-            <div id="dropdownMenu" class="dropdown-content">
-                <a href="#ajukanPeminjaman">Ajukan Peminjaman</a>
-                <a href="#riwayatTransaksi">Riwayat Transaksi</a>
-            </div>
-        </div>
-    </nav>
-     
-    <section id="peminjaman">
+
+    <!-- Navigasi Dropdown -->
+    <header>
+        <div id="navbar-container"></div>
+    </header> 
+
+    <section class="peminjaman" id="peminjaman">
         <h2>Ajukan Peminjaman</h2>
         <form id="formPeminjaman">
             <label for="nama">Nama:</label>
@@ -32,8 +28,8 @@
             <button type="submit">Ajukan</button>
         </form>
     </section>
-    
-    <section id="riwayat">
+
+    <section class="riwayat" id="riwayat">
         <h2>Riwayat Transaksi</h2>
         <table>
             <thead>

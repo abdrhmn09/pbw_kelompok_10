@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.getElementById("dropdownToggle");
-    const dropdownMenu = document.getElementById("dropdownMenu");
-
-    dropdownToggle.addEventListener("click", function () {
-        dropdownMenu.classList.toggle("show");
-    });
-
+    // Fetch and insert navbar
+    fetch("/component/userNavbar.html")
+    .then((response) => response.text())
+    .then((data) => {
+    document.getElementById("navbar-container").innerHTML = data;
+    markActiveNavLink(); // Call function to mark active link after navbar is loaded
+    setupNavbarInteractions(); // Setup navbar interactions after navbar is loaded
+    })
+    
+.catch((err) => console.error("Error mengambil navbar:", err));
     document.getElementById('formPeminjaman').addEventListener('submit', function(event) {
         event.preventDefault();
         
