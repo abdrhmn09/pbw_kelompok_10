@@ -223,34 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupToggleForInput(confirmPasswordInput);
   }
 
-  function handleFormSubmission() {
-    registerForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // Reset any previous error messages
-      removeErrorMessages();
-
-      // Validate form
-      if (validateForm()) {
-        // Show loading state
-        registerButton.classList.add("loading");
-
-        // Simulate API call (replace with actual API call)
-        setTimeout(() => {
-          registerButton.classList.remove("loading");
-
-          // Show success animation
-          const successContainer = document.querySelector(".register-success");
-          successContainer.classList.add("show");
-
-          // Redirect to login page after delay
-          setTimeout(() => {
-            window.location.href = "login.html";
-          }, 3000);
-        }, 2000);
-      }
-    });
-  }
+  
 
   function validateForm() {
     let isValid = true;
@@ -298,6 +271,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     return isValid;
+  }
+
+  function handleFormSubmission() {
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      removeErrorMessages();
+      
+      if (validateForm()) {
+        registerButton.classList.add("loading");
+        
+        // Simpan data user ke localStorage
+        const userData = {
+          fullname: fullnameInput.value,
+          phone: phoneInput.value,
+          username: usernameInput.value,
+          password: passwordInput.value, // Dalam real project, gunakan hashing
+          role: "Pengguna"
+        };
+        
+        let users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        users.push(userData);
+        localStorage.setItem("registeredUsers", JSON.stringify(users));
+        
+        setTimeout(() => {
+          registerButton.classList.remove("loading");
+          document.querySelector(".register-success").classList.add("show");
+          setTimeout(() => window.location.href = "login.html", 3000);
+        }, 2000);
+      }
+    });
   }
 
   function showError(input, message) {

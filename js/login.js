@@ -314,10 +314,15 @@ document.addEventListener("DOMContentLoaded", function () {
             showError("Username atau password admin salah!");
           }
         } else if (loginType === "user") {
-          // Simpan username ke localStorage
-          localStorage.setItem("username", username);
-          // Untuk demo, terima kredensial apa pun untuk user
-          showSuccess("/pages/Userdashboard.html");
+          const users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+          const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+              // Simpan data user yang login
+              localStorage.setItem("currentUser", JSON.stringify(user));
+              showSuccess("/pages/Userdashboard.html");
+            } else {
+              showError("Username atau password salah!");
+            }
         }
       }, 1500);
     });

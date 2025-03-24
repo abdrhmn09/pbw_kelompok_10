@@ -5,9 +5,11 @@ fetch("/component/userNavbar.html")
     document.getElementById("navbar-container").innerHTML = data;
     markActiveNavLink(); // Call function to mark active link after navbar is loaded
     setupNavbarInteractions(); // Setup navbar interactions after navbar is loaded
-    updateNavbarUsername(); // Update username in navbar
+    updateNavbarProfile(); // Update username in navbar
   })
   .catch((err) => console.error("Error mengambil navbar:", err));
+
+  
 
 // Function to mark active nav link based on current URL
 function markActiveNavLink() {
@@ -39,15 +41,20 @@ function setupNavbarInteractions() {
   }, 10000);
 }
 
-// Fungsi untuk mengambil nama dari localStorage dan mengupdate navbar
-function updateNavbarUsername() {
-  const storedName = localStorage.getItem("username");
-  if (storedName) {
-    // Update elemen di selamat datang
-    document.querySelectorAll("#username").forEach((el) => {
-      el.textContent = "" + storedName;
-    });
-  }
+// Fungsi terpusat untuk update navbar
+function updateNavbarProfile() {
+  const user = JSON.parse(localStorage.getItem("currentUser")); // Ambil data user
+  if (!user) return;
+
+  // Update semua elemen yang perlu
+  document.querySelectorAll(".user-profile span, .mobile-user span").forEach(el => {
+    el.textContent = user.fullname || user.username;
+  });
+
+  // Jika ada elemen spesifik untuk username (opsional)
+  document.querySelectorAll("#username").forEach(el => {
+    el.textContent = user.username;
+  });
 }
 
 // Call the function to mark active nav link when the DOM is fully loaded

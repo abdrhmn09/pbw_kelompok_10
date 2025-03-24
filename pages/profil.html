@@ -28,27 +28,19 @@
       <div class="profile-content">
         <div class="profile-picture">
           <img src="/asset/man.png" alt="Profile Picture" id="profileImage" />
-          <div class="user-name">John Doe</div>
+          <div class="user-name" id="profile-fullname" >John Doe</div>
           <button id="changeProfilePic" class="btn-edit">Edit Foto</button>
-          <div class="inventory-summary">
-            <h2>Barang yang Disimpan</h2>
-            <div class="inventory-details">
-              <p>Total Barang: <span id="totalItems">30</span></p>
-              <p>Barang Tersedia: <span id="availableItems">25</span></p>
-              <p>
-                Barang Dipinjam:
-                <span id="borrowedItems" class="borrowed">5</span>
-              </p>
-            </div>
-          </div>
         </div>
 
         <div class="profile-info">
           <div class="info-item">
-            <label>Username:</label><span id="username">johndoe123</span>
+            <label>Nama lengkap:</label><span id="profile-fullname-info">johndoe123</span>
           </div>
           <div class="info-item">
-            <label>Phone:</label><span id="phone">081234567890</span>
+            <label>Username:</label><span id="profile-username"></span>
+          </div>
+          <div class="info-item">
+            <label>Phone:</label><span id="profile-phone">081234567890</span>
           </div>
           <div class="info-item">
             <label>Status:</label><span id="status">Aktif</span>

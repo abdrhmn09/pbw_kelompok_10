@@ -409,7 +409,19 @@
   }
 
   // Panggil fungsi saat halaman dimuat
-  document.addEventListener("DOMContentLoaded", markActiveNavLink,);
+  document.addEventListener("DOMContentLoaded", function() {
+  markActiveNavLink();
+  
+  // Ambil data user yang login
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+  // Update nama di navbar
+  if(currentUser) {
+    document.querySelectorAll('.user-profile span, .mobile-user span').forEach(el => {
+      el.textContent = currentUser.fullname || currentUser.username;
+    });
+  }
+});
 
   // Simulasi notifikasi real-time (contoh)
   setInterval(() => {

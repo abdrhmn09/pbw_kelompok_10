@@ -9,7 +9,10 @@ fetch("/component/adminNavbar.html")
   .catch((err) => console.error("Error mengambil navbar:", err));
 
 // Ambil data user dari localStorage, atau inisialisasi array kosong
+// Di bagian atas file
 let users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+// Fungsi render tabel tetap sama karena sudah menggunakan data dari localStorage
 
 // Fungsi untuk me-render tabel user
 const userTableBody = document.querySelector("#userTable tbody");

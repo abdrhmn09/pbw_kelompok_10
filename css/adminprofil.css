@@ -20,6 +20,7 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   margin-top: 80px;
+  margin: 80px auto;
 }
 
 .profile-header h1 {
@@ -112,4 +113,35 @@ body {
 .btn-logout:hover {
   background-color: #d32f2f;
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    margin: 100px auto 50px; /* Atas 100px untuk header mobile, bawah 50px untuk navbar */
+    width: 90%;
+    padding: 15px;
+  }
+
+  body {
+    display: flex; /* Pertahankan flex untuk centering */
+    flex-direction: column; /* Arahkan ke column */
+    min-height: 100vh;
+    padding: 65px 0; /* Sesuaikan dengan tinggi navbar */
+  }
+
+  .profile-content {
+    flex-direction: column;
+    align-items: center; /* Tambahkan ini untuk centering */
+  }
+
+  .profile-info {
+    width: 100%;
+    max-width: 400px; /* Batasi lebar maksimum */
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .profile-container {
+    margin: 100px auto; /* Gunakan auto untuk centering horizontal */
+  }
 }
