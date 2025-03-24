@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         } else if (loginType === "user") {
           // For demo purposes, accept any credentials for user login
-          showSuccess("userdashboard.html");
+          showSuccess("Userdashboard.html");
         }
       }, 1500);
     });
