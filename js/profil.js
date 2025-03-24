@@ -74,6 +74,6 @@ document.getElementById("logoutBtn")?.addEventListener("click", function () {
   if (confirm("Apakah Anda yakin ingin keluar?")) {
     localStorage.removeItem("token");
 
-    window.location.href = "/page/index.html";
+    window.location.href = "login.html";
   }
 });
