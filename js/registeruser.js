@@ -1,43 +1,346 @@
-// Fungsi untuk toggle password visibility
-function togglePasswordVisibility(passwordInput) {
-  const toggleButton = document.createElement("button");
-  toggleButton.type = "button";
-  toggleButton.textContent = "👁️"; // Teks default
-  toggleButton.className = "toggle-password";
+// Wait for DOM to fully load
+document.addEventListener("DOMContentLoaded", function () {
+  // Elements
+  const registerForm = document.querySelector("#registerForm");
+  const fullnameInput = document.getElementById("fullname");
+  const phoneInput = document.getElementById("phone"); // Changed from emailInput
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const registerButton = document.querySelector(".register-button");
+  const formGroups = document.querySelectorAll(".form-group");
+  const appInfo = document.querySelector(".app-info");
+  const registerFormContainer = document.querySelector(".register-form");
 
-  // Tambahkan tombol toggle ke dalam container input password
-  const passwordContainer = passwordInput.parentNode;
-  passwordContainer.appendChild(toggleButton);
+  // Add initial animations
+  initPageAnimations();
 
-  toggleButton.addEventListener("click", () => {
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      toggleButton.textContent = "👁️‍🗨️"; // Teks saat password ditampilkan
-    } else {
-      passwordInput.type = "password";
-      toggleButton.textContent = "👁️"; // Teks saat password disembunyikan
+  // Setup form interactions
+  setupFormInteractions();
+
+  // Setup toggle password visibility
+  setupPasswordToggle();
+
+  // Setup phone number input to only accept numbers
+  setupPhoneNumberInput();
+
+  // Create success animation elements
+  createSuccessElements();
+
+  // Handle form submission
+  handleFormSubmission();
+
+  // Functions
+  function initPageAnimations() {
+    // Add animation classes after a small delay
+    setTimeout(() => {
+      appInfo.classList.add("app-info-fade-in");
+      registerFormContainer.classList.add("form-fade-in");
+    }, 100);
+
+    // Create and add particles to the app-info section
+    createParticles();
+  }
+
+  function createParticles() {
+    const particlesContainer = document.createElement("div");
+    particlesContainer.className = "particles-container";
+    particlesContainer.style.position = "absolute";
+    particlesContainer.style.top = "0";
+    particlesContainer.style.left = "0";
+    particlesContainer.style.width = "100%";
+    particlesContainer.style.height = "100%";
+    particlesContainer.style.overflow = "hidden";
+    particlesContainer.style.zIndex = "1";
+
+    // Create particles
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.position = "absolute";
+      particle.style.width = `${Math.random() * 5 + 2}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = "rgba(255, 255, 255, 0.5)";
+      particle.style.borderRadius = "50%";
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animation = `floatParticle ${
+        Math.random() * 10 + 5
+      }s linear infinite`;
+
+      particlesContainer.appendChild(particle);
     }
-  });
-}
 
-// Terapkan fungsi togglePasswordVisibility ke kedua input password
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirm-password");
+    appInfo.appendChild(particlesContainer);
 
-togglePasswordVisibility(passwordInput);
-togglePasswordVisibility(confirmPasswordInput);
+    // Add the keyframes for the particle animation
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes floatParticle {
+        0% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(${Math.random() * 50 - 25}px, ${
+      Math.random() * 50 - 25
+    }px);
+        }
+        50% {
+          transform: translate(${Math.random() * 50 - 25}px, ${
+      Math.random() * 50 - 25
+    }px);
+        }
+        75% {
+          transform: translate(${Math.random() * 50 - 25}px, ${
+      Math.random() * 50 - 25
+    }px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
-// Validasi form register
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (event) {
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
+  function setupFormInteractions() {
+    // Add focus and blur event listeners to inputs
+    const inputs = document.querySelectorAll(".form-group input");
 
-    if (password !== confirmPassword) {
-      alert("Password dan Konfirmasi Password tidak cocok!");
-      event.preventDefault();
-    } else {
-      alert("Registrasi berhasil!");
+    inputs.forEach((input) => {
+      // Focus effect
+      input.addEventListener("focus", () => {
+        input.parentElement.classList.add("focused");
+      });
+
+      // Blur effect
+      input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
+          input.parentElement.classList.remove("focused");
+        }
+      });
+
+      // Check if input has value on page load
+      if (input.value.trim() !== "") {
+        input.parentElement.classList.add("focused");
+      }
+    });
+
+    // Add input animations
+    animateFormAppearance();
+  }
+
+  function setupPhoneNumberInput() {
+    // Only allow numbers in phone input
+    if (phoneInput) {
+      // Prevent non-numeric input
+      phoneInput.addEventListener("keypress", function (e) {
+        if (!/^\d$/.test(e.key) && e.key !== "+") {
+          e.preventDefault();
+        }
+      });
+
+      // Clean input on paste
+      phoneInput.addEventListener("paste", function (e) {
+        e.preventDefault();
+        const pastedText = (e.clipboardData || window.clipboardData).getData(
+          "text"
+        );
+        const numericText = pastedText.replace(/[^\d+]/g, "");
+        phoneInput.value += numericText;
+      });
+
+      // Add placeholder format for Indonesian phone numbers
+      phoneInput.placeholder = "08xxxxxxxxxx";
+
+      // Format the phone number as the user types
+      phoneInput.addEventListener("input", function () {
+        // Remove any non-numeric characters except for the first '+'
+        let value = this.value.replace(/[^\d+]/g, "");
+
+        // Ensure only one '+' at the beginning if present
+        if (value.startsWith("+")) {
+          value = "+" + value.substring(1).replace(/\+/g, "");
+        } else {
+          value = value.replace(/\+/g, "");
+        }
+
+        this.value = value;
+      });
     }
-  });
+  }
+
+  function animateFormAppearance() {
+    // Animate form groups one by one
+    formGroups.forEach((group, index) => {
+      setTimeout(() => {
+        group.style.opacity = "0";
+        group.style.transform = "translateY(20px)";
+        group.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
+        setTimeout(() => {
+          group.style.opacity = "1";
+          group.style.transform = "translateY(0)";
+        }, 100);
+      }, index * 150);
+    });
+
+    // Animate button and login link
+    setTimeout(() => {
+      registerButton.style.opacity = "0";
+      registerButton.style.transform = "translateY(20px)";
+      registerButton.style.transition =
+        "opacity 0.5s ease, transform 0.5s ease";
+
+      setTimeout(() => {
+        registerButton.style.opacity = "1";
+        registerButton.style.transform = "translateY(0)";
+      }, 100);
+    }, formGroups.length * 150);
+
+    const loginLink = document.querySelector(".login-link");
+    setTimeout(() => {
+      loginLink.style.opacity = "0";
+      loginLink.style.transition = "opacity 0.5s ease";
+
+      setTimeout(() => {
+        loginLink.style.opacity = "1";
+      }, 100);
+    }, formGroups.length * 150 + 200);
+  }
+
+  function setupPasswordToggle() {
+    // Create toggle buttons for both password fields
+    const setupToggleForInput = (input) => {
+      const toggleButton = document.createElement("button");
+      toggleButton.type = "button";
+      toggleButton.className = "toggle-password";
+      toggleButton.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+
+      // Add button to password input container
+      const inputContainer = input.parentElement;
+      inputContainer.style.position = "relative";
+      inputContainer.appendChild(toggleButton);
+
+      // Toggle password visibility on click
+      toggleButton.addEventListener("click", () => {
+        if (input.type === "password") {
+          input.type = "text";
+          toggleButton.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+        } else {
+          input.type = "password";
+          toggleButton.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+        }
+      });
+    };
+
+    // Setup toggle for both password fields
+    setupToggleForInput(passwordInput);
+    setupToggleForInput(confirmPasswordInput);
+  }
+
+  function createSuccessElements() {
+    // Create success message container
+    const successContainer = document.createElement("div");
+    successContainer.className = "register-success";
+
+    // SVG Checkmark
+    successContainer.innerHTML = `
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <h2 style="color: white; margin-top: 20px;">Registrasi Berhasil!</h2>
+      <p style="color: white; margin-top: 10px;">Anda akan dialihkan ke halaman login...</p>
+    `;
+
+    document.querySelector(".register-container").appendChild(successContainer);
+  }
+
+  function handleFormSubmission() {
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Reset any previous error messages
+      removeErrorMessages();
+
+      // Validate form
+      if (validateForm()) {
+        // Show loading state
+        registerButton.classList.add("loading");
+
+        // Simulate API call (replace with actual API call)
+        setTimeout(() => {
+          registerButton.classList.remove("loading");
+
+          // Show success animation
+          const successContainer = document.querySelector(".register-success");
+          successContainer.classList.add("show");
+
+          // Redirect to login page after delay
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 3000);
+        }, 2000);
+      }
+    });
+  }
+
+  function validateForm() {
+    let isValid = true;
+
+    // Validate phone number (Indonesian format)
+    const phoneRegex = /^(\+62|62|0)[0-9]{8,15}$/;
+    if (!phoneRegex.test(phoneInput.value)) {
+      showError(
+        phoneInput,
+        "Format nomor HP tidak valid (contoh: 08xxxxxxxxxx)"
+      );
+      isValid = false;
+    }
+
+    // Validate username (alphanumeric and minimum 5 characters)
+    const usernameRegex = /^[a-zA-Z0-9]{5,}$/;
+    if (!usernameRegex.test(usernameInput.value)) {
+      showError(
+        usernameInput,
+        "Username harus minimal 5 karakter dan hanya mengandung huruf dan angka"
+      );
+      isValid = false;
+    }
+
+    // Validate password (minimum 8 characters with at least one number and one letter)
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!passwordRegex.test(passwordInput.value)) {
+      showError(
+        passwordInput,
+        "Password harus minimal 8 karakter dan mengandung setidaknya 1 huruf dan 1 angka"
+      );
+      isValid = false;
+    }
+
+    // Validate password confirmation
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      showError(confirmPasswordInput, "Konfirmasi password tidak sesuai");
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  function showError(input, message) {
+    const formGroup = input.parentElement;
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    errorMessage.textContent = message;
+    formGroup.appendChild(errorMessage);
+  }
+
+  function removeErrorMessages() {
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach((message) => message.remove());
+  }
+});
