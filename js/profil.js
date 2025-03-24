@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Cek session dan redirect jika belum login
   if (!localStorage.getItem("currentUser")) {
-    window.location.href = "/pages/login.html";
+    window.location.href = "../pages/login.html";
     return;
   }
 

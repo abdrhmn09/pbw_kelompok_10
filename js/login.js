@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Check credentials based on login type
         if (loginType === "admin") {
           if (username === "admin" && password === "admin123") {
-            showSuccess("/pages/adminDashboard.html");
+            showSuccess("../pages/adminDashboard.html");
           } else {
             showError("Username atau password admin salah!");
           }
@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (user) {
               // Simpan data user yang login
               localStorage.setItem("currentUser", JSON.stringify(user));
-              showSuccess("/pages/Userdashboard.html");
+              showSuccess("../pages/Userdashboard.html");
             } else {
               showError("Username atau password salah!");
             }

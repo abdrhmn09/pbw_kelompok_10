@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch and insert navbar
-    fetch("/component/adminNavbar.html")
+    fetch("../component/adminNavbar.html")
     .then((response) => response.text())
     .then((data) => {
     document.getElementById("navbar-container").innerHTML = data;

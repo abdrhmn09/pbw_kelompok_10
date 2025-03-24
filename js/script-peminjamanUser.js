@@ -1,6 +1,6 @@
 
 // Fetch and insert navbar
-    fetch("/component/userNavbar.html")
+    fetch("../component/userNavbar.html")
     .then((response) => response.text())
     .then((data) => {
     document.getElementById("navbar-container").innerHTML = data;
