@@ -29,6 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ease: "power2.out",
   });
 
+  // Update nama pada profil (misalnya pada elemen dengan class .user-name)
+  const storedName = localStorage.getItem("username");
+  if (storedName) {
+    const nameElements = document.querySelectorAll(".user-name");
+    nameElements.forEach(el => {
+      el.textContent = storedName;
+    });
+  }
+
   // Profile Picture Change
   document
     .getElementById("changeProfilePic")

@@ -5,6 +5,7 @@ fetch("/component/userNavbar.html")
     document.getElementById("navbar-container").innerHTML = data;
     markActiveNavLink(); // Call function to mark active link after navbar is loaded
     setupNavbarInteractions(); // Setup navbar interactions after navbar is loaded
+    updateNavbarUsername(); // Update username in navbar
   })
   .catch((err) => console.error("Error mengambil navbar:", err));
 
@@ -36,6 +37,17 @@ function setupNavbarInteractions() {
       badge.style.animation = "pulsate 1.5s infinite";
     });
   }, 10000);
+}
+
+// Fungsi untuk mengambil nama dari localStorage dan mengupdate navbar
+function updateNavbarUsername() {
+  const storedName = localStorage.getItem("username");
+  if (storedName) {
+    // Update elemen di selamat datang
+    document.querySelectorAll("#username").forEach((el) => {
+      el.textContent = "" + storedName;
+    });
+  }
 }
 
 // Call the function to mark active nav link when the DOM is fully loaded

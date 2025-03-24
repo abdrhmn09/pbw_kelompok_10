@@ -314,7 +314,9 @@ document.addEventListener("DOMContentLoaded", function () {
             showError("Username atau password admin salah!");
           }
         } else if (loginType === "user") {
-          // For demo purposes, accept any credentials for user login
+          // Simpan username ke localStorage
+          localStorage.setItem("username", username);
+          // Untuk demo, terima kredensial apa pun untuk user
           showSuccess("/pages/Userdashboard.html");
         }
       }, 1500);
