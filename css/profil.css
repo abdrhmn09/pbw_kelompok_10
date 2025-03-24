@@ -112,3 +112,14 @@ body {
   background-color: #d32f2f;
   transform: scale(1.05);
 }
+
+/* Responsive untuk Mobile */
+@media screen and (max-width: 768px) {
+  /* Tambahkan ruang di bagian bawah agar konten tidak tertutupi navbar yang fixed di bawah */
+  body {
+    padding-bottom: 80px; /* Sesuaikan nilai ini dengan tinggi navbar mobile */
+  }
+  .profile-container {
+    margin-bottom: 80px; /* Pastikan konten utama memiliki ruang di bawah */
+  }
+}
