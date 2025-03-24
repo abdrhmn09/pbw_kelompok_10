@@ -456,6 +456,7 @@ body {
 
 /* Search Bar Styles */
 .search-container {
+    margin-top: 90px; /* Tambahan margin agar tidak tertutup navbar */
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
