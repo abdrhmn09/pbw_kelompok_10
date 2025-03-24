@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Barang Kita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="/css/adminDashboard.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div id="navbar-container"></div>
+  </header>
+
+  <main class="dashboard-container">
+    <!-- CRUD Section -->
+    <section class="crud-section">
+      <h2>Data Barang</h2>
+      <button id="addItemBtn" class="btn primary">Tambah Barang</button>
+      <table id="barangTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama Barang</th>
+            <th>Kategori</th>
+            <th>Stok</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data barang akan di-inject secara dinamis -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Laporan / Statistik -->
+    <section class="report-section">
+      <h2>Laporan Singkat</h2>
+      <div class="chart-container">
+        <canvas id="barangChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal untuk Tambah/Edit Barang -->
+  <div id="itemModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Tambah Barang</h2>
+      <form id="itemForm">
+        <input type="hidden" id="itemId" name="itemId" />
+        <div class="form-group">
+          <label for="namaBarang">Nama Barang</label>
+          <input type="text" id="namaBarang" name="namaBarang" required />
+        </div>
+        <div class="form-group">
+          <label for="kategori">Kategori</label>
+          <input type="text" id="kategori" name="kategori" required />
+        </div>
+        <div class="form-group">
+          <label for="stok">Stok</label>
+          <input type="number" id="stok" name="stok" required min="0" />
+        </div>
+        <button type="submit" class="btn primary">Simpan</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/adminDashboard.js"></script>
+</body>
+</html>
