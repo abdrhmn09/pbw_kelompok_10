@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Elements
   const registerForm = document.querySelector("#registerForm");
   const fullnameInput = document.getElementById("fullname");
-  const phoneInput = document.getElementById("phone"); // Changed from emailInput
+  const phoneInput = document.getElementById("phone");
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const confirmPasswordInput = document.getElementById("confirm-password");
@@ -24,9 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Setup phone number input to only accept numbers
   setupPhoneNumberInput();
 
-  // Create success animation elements
-  createSuccessElements();
-
   // Handle form submission
   handleFormSubmission();
 
@@ -45,62 +42,46 @@ document.addEventListener("DOMContentLoaded", function () {
   function createParticles() {
     const particlesContainer = document.createElement("div");
     particlesContainer.className = "particles-container";
-    particlesContainer.style.position = "absolute";
-    particlesContainer.style.top = "0";
-    particlesContainer.style.left = "0";
-    particlesContainer.style.width = "100%";
-    particlesContainer.style.height = "100%";
-    particlesContainer.style.overflow = "hidden";
-    particlesContainer.style.zIndex = "1";
 
     // Create particles
     for (let i = 0; i < 20; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
-      particle.style.position = "absolute";
       particle.style.width = `${Math.random() * 5 + 2}px`;
       particle.style.height = particle.style.width;
-      particle.style.background = "rgba(255, 255, 255, 0.5)";
-      particle.style.borderRadius = "50%";
       particle.style.top = `${Math.random() * 100}%`;
       particle.style.left = `${Math.random() * 100}%`;
-      particle.style.animation = `floatParticle ${
-        Math.random() * 10 + 5
-      }s linear infinite`;
+
+      // Create unique animation for each particle
+      const duration = Math.random() * 10 + 5;
+      const keyframeName = `floatParticle${i}`;
+
+      // Add keyframe animation
+      const style = document.createElement("style");
+      style.innerHTML = `
+        @keyframes ${keyframeName} {
+          0% { transform: translate(0, 0); }
+          25% { transform: translate(${Math.random() * 50 - 25}px, ${
+        Math.random() * 50 - 25
+      }px); }
+          50% { transform: translate(${Math.random() * 50 - 25}px, ${
+        Math.random() * 50 - 25
+      }px); }
+          75% { transform: translate(${Math.random() * 50 - 25}px, ${
+        Math.random() * 50 - 25
+      }px); }
+          100% { transform: translate(0, 0); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Apply animation
+      particle.style.animation = `${keyframeName} ${duration}s linear infinite`;
 
       particlesContainer.appendChild(particle);
     }
 
     appInfo.appendChild(particlesContainer);
-
-    // Add the keyframes for the particle animation
-    const style = document.createElement("style");
-    style.textContent = `
-      @keyframes floatParticle {
-        0% {
-          transform: translate(0, 0);
-        }
-        25% {
-          transform: translate(${Math.random() * 50 - 25}px, ${
-      Math.random() * 50 - 25
-    }px);
-        }
-        50% {
-          transform: translate(${Math.random() * 50 - 25}px, ${
-      Math.random() * 50 - 25
-    }px);
-        }
-        75% {
-          transform: translate(${Math.random() * 50 - 25}px, ${
-      Math.random() * 50 - 25
-    }px);
-        }
-        100% {
-          transform: translate(0, 0);
-        }
-      }
-    `;
-    document.head.appendChild(style);
   }
 
   function setupFormInteractions() {
@@ -242,24 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setupToggleForInput(confirmPasswordInput);
   }
 
-  function createSuccessElements() {
-    // Create success message container
-    const successContainer = document.createElement("div");
-    successContainer.className = "register-success";
-
-    // SVG Checkmark
-    successContainer.innerHTML = `
-      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-      </svg>
-      <h2 style="color: white; margin-top: 20px;">Registrasi Berhasil!</h2>
-      <p style="color: white; margin-top: 10px;">Anda akan dialihkan ke halaman login...</p>
-    `;
-
-    document.querySelector(".register-container").appendChild(successContainer);
-  }
-
   function handleFormSubmission() {
     registerForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -291,6 +254,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateForm() {
     let isValid = true;
+
+    // Validate fullname (not empty)
+    if (fullnameInput.value.trim() === "") {
+      showError(fullnameInput, "Nama lengkap tidak boleh kosong");
+      isValid = false;
+    }
 
     // Validate phone number (Indonesian format)
     const phoneRegex = /^(\+62|62|0)[0-9]{8,15}$/;
