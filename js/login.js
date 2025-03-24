@@ -80,7 +80,7 @@ loginForm.addEventListener("submit", (e) => {
     } else if (loginType === "user") {
       // Tidak perlu validasi untuk user
       alert("Login sebagai user berhasil! Redirecting...");
-      window.location.href = "user-dashboard.html"; // Redirect ke halaman dashboard user
+      window.location.href = "userdashboard.html"; // Redirect ke halaman dashboard user
     }
   }, 2000); // Simulasi delay 2 detik
 });
