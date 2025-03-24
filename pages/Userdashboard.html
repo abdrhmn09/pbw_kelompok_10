@@ -14,49 +14,24 @@
         <!-- Header Section -->
         <section class="welcome-section">
             <div class="welcome-content">
-                <h1>Selamat Datang, <span id="username">John Doe</span> 👋</h1>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <i class="fas fa-box-open"></i>
-                        <div>
-                            <h3>Total Barang</h3>
-                            <p class="count">245</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-hand-holding"></i>
-                        <div>
-                            <h3>Sedang Dipinjam</h3>
-                            <p class="count">3</p>
-                        </div>
-                    </div>
-                </div>
+                <h1>Hi, <span id="username">John Doe</span> 👋</h1>
             </div>
         </section>
-    
-        <!-- Quick Access Grid -->
-        <div class="main-grid">
-            <div class="quick-access-card">
-                <h2><i class="fas fa-hand-holding"></i> Peminjaman</h2>
-                <div class="loan-list">
-                    <!-- Content from API -->
+        <section class="inventory-section">
+            <h2>Inventaris Barang</h2>
+            <div class="inventory-grid">
+              <!-- Item akan diisi oleh API -->
+              <div class="inventory-item">
+                <img src="https://image.benq.com/is/image/benqco/LH820ST-right30?$ResponsivePreset$&fmt=png-alpha" alt="Nama Barang" class="inventory-img">
+                <div class="inventory-info">
+                  <h3>Proyektor Epson</h3>
+                  <p>Stok: 5</p>
+                  <span class="status">Tersedia</span>
                 </div>
+              </div>
+              <!-- Item lainnya -->
             </div>
-            
-            <div class="quick-access-card">
-                <h2><i class="fas fa-bell"></i> Notifikasi</h2>
-                <div class="notification-list">
-                    <!-- Content from API -->
-                </div>
-            </div>
-            
-            <div class="quick-access-card double-size">
-                <h2><i class="fas fa-boxes"></i> Inventaris</h2>
-                <div class="inventory-grid" id="inventory-container">
-                    <!-- Inventory items will be populated by JS -->
-                </div>
-            </div>
-        </div>
+          </section>
     </main>
 <script src="/js/UserDashboard.js"></script>
 </body>

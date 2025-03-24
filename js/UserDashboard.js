@@ -7,7 +7,7 @@ fetch("/component/userNavbar.html")
     setupNavbarInteractions(); // Setup navbar interactions after navbar is loaded
   })
   .catch((err) => console.error("Error mengambil navbar:", err));
-/*
+
 // Function to mark active nav link based on current URL
 function markActiveNavLink() {
   const currentPage = window.location.pathname.split("/").pop(); // Get the current page filename
@@ -40,7 +40,7 @@ function setupNavbarInteractions() {
 
 // Call the function to mark active nav link when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", markActiveNavLink);
-*/
+
 // Fetch inventory data from API
 async function fetchInventory() {
   try {
