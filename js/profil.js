@@ -72,10 +72,8 @@ function setupNavbarInteractions() {
 // Logout functionality
 document.getElementById("logoutBtn")?.addEventListener("click", function () {
   if (confirm("Apakah Anda yakin ingin keluar?")) {
-    // Hapus token atau session (opsional)
-    localStorage.removeItem("token"); // Contoh menghapus token dari localStorage
+    localStorage.removeItem("token");
 
-    // Redirect ke index.html
-    window.location.href = "loginuser.html"; // Pastikan path ini benar
+    window.location.href = "index.html";
   }
 });
