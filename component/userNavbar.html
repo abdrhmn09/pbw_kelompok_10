@@ -20,18 +20,20 @@
     top: 0;
     left: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 30px;
   }
 
   .nav-links {
     display: flex;
     list-style: none;
-    width: 100%;
-    max-width: 900px;
+    width: auto;
+    max-width: 600px;
+    margin-left: auto;
     padding: 0 20px;
     position: relative;
   }
@@ -126,6 +128,57 @@
     width: 70%;
   }
 
+  .brand-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    color: white;
+  }
+
+  .app-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+  }
+  .app-brand img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .user-profile i {
+    font-size: 1.2rem;
+  }
+
+  .mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1a237e, #0d47a1);
+    color: white;
+    padding: 12px 20px;
+    height: 60px;
+    z-index: 1001;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .mobile-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
   /* Responsive untuk Mobile */
   @media screen and (max-width: 768px) {
     .navbar {
@@ -134,10 +187,23 @@
       height: 60px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       border-bottom: none;
+      justify-content: center;
+    }
+
+    .nav-links {
+      justify-content: space-around; /* atau center */
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0 5px;
+    }
+
+    .nav-links li {
+      flex: 0 1 auto;
     }
 
     .nav-links a {
-      height: 60px;
+      height: 40px;
       padding: 10px;
     }
 
@@ -156,11 +222,44 @@
       font-size: 9px;
       padding: 1px 5px;
     }
+    .brand-container {
+      display: none;
+    }
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-color);
+    }
+    .mobile-brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-color);
+    }
+    .mobile-brand img{
+      width: 40px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
   }
 </style>
 
 <!-- Navbar -->
+<div class="mobile-header">
+  <span class="mobile-brand"><img src="/asset/barangkita.png" alt=""><p>Barang kita</p></span>
+  <div class="mobile-user">
+    <i class="fas fa-user-circle"></i>
+    <span>John Doe</span>
+  </div>
+</div>
 <nav class="navbar">
+  <div class="brand-container">
+    <span class="app-brand"><img src="/asset/barangkita.png" alt=""><p>Barang kita</p></span>
+    <div class="user-profile">
+      <span>Hi, John Doe</span>
+    </div>
+  </div>
   <ul class="nav-links">
     <li>
       <a href="/pages/Userdashboard.html">

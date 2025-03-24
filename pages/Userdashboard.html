@@ -10,6 +10,86 @@
     <header>
         <div id="navbar-container"></div>
     </header>
+    <main class="dashboard-container">
+        <!-- Header Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <h1>Selamat Datang, <span id="username">John Doe</span> 👋</h1>
+                <p>Status Peminjaman Aktif: <span class="status-badge active">3 Peminjaman</span></p>
+            </div>
+            <div class="quick-actions">
+                <button class="btn primary">
+                    <i class="fas fa-plus"></i> Ajukan Peminjaman
+                </button>
+            </div>
+        </section>
+    
+        <!-- Statistik Cepat -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-box-open"></i>
+                <div>
+                    <h3>Barang Tersedia</h3>
+                    <p class="count">245</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-hand-holding"></i>
+                <div>
+                    <h3>Peminjaman Aktif</h3>
+                    <p class="count">3</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h3>Jatuh Tempo</h3>
+                    <p class="count">2</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-bell"></i>
+                <div>
+                    <h3>Notifikasi</h3>
+                    <p class="count">5</p>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Dua Kolom Utama -->
+        <section class="main-content">
+            <!-- Daftar Peminjaman Aktif -->
+            <div class="content-card">
+                <h2><i class="fas fa-clipboard-list"></i> Peminjaman Aktif</h2>
+                <div class="loan-list">
+                    <div class="loan-item">
+                        <div class="loan-info">
+                            <h4>Proyektor Epson EB-X41</h4>
+                            <p>Pinjam: 12 Mar 2024</p>
+                            <p>Kembali: 19 Mar 2024</p>
+                        </div>
+                        <span class="status-badge warning">2 Hari Lagi</span>
+                    </div>
+                    <!-- Item lainnya -->
+                </div>
+            </div>
+    
+            <!-- Notifikasi Terbaru -->
+            <div class="content-card">
+                <h2><i class="fas fa-bell"></i> Notifikasi Terbaru</h2>
+                <div class="notification-list">
+                    <div class="notification-item unread">
+                        <i class="fas fa-exclamation-circle urgent"></i>
+                        <div>
+                            <p>Peminjaman laptop akan jatuh tempo besok</p>
+                            <small>2 jam yang lalu</small>
+                        </div>
+                    </div>
+                    <!-- Notifikasi lainnya -->
+                </div>
+            </div>
+        </section>
+    </main>
 <script src="/js/UserDashboard.js"></script>
 </body>
 </html>
