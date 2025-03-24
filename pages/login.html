@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - BarangKita</title>
-    <link rel="stylesheet" href="/css/loginadmin.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script src="/js/loginadmin.js" defer></script>
+    <script src="/js/login.js" defer></script>
   </head>
   <body>
     <div class="login-container">
@@ -31,6 +31,13 @@
       <div class="login-form">
         <h2>LOGIN</h2>
         <form>
+          <div class="form-group">
+            <label for="login-type">Login Sebagai</label>
+            <select id="login-type" name="login-type" required>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="username">Username</label>
             <input

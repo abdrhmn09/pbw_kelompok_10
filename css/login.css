@@ -91,16 +91,18 @@ body {
   margin-bottom: 5px;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
   width: 100%;
-  padding: 12px 120px 12px 12px; /* Beri ruang untuk tombol toggle di kanan */
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
   border-color: #03318c;
   outline: none;
 }

@@ -1,5 +1,6 @@
 // Ambil elemen-elemen yang dibutuhkan
 const loginForm = document.querySelector(".login-form form");
+const loginTypeSelect = document.getElementById("login-type");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.querySelector(".login-button");
@@ -55,14 +56,10 @@ function togglePasswordVisibility() {
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault(); // Mencegah form submit default
 
-  // Validasi input
+  // Ambil nilai input
   const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
-
-  if (!username || !password) {
-    showError("Username dan password tidak boleh kosong!");
-    return;
-  }
+  const loginType = loginTypeSelect.value;
 
   // Tampilkan animasi loading
   showLoading();
@@ -71,12 +68,19 @@ loginForm.addEventListener("submit", (e) => {
   setTimeout(() => {
     hideLoading();
 
-    // Contoh validasi sederhana
-    if (username === "admin" && password === "admin123") {
-      alert("Login berhasil! Redirecting...");
-      window.location.href = "dashboard.html"; // Redirect ke halaman dashboard
-    } else {
-      showError("Username atau password salah!");
+    // Logika login berdasarkan pilihan
+    if (loginType === "admin") {
+      // Validasi untuk admin
+      if (username === "admin" && password === "admin123") {
+        alert("Login sebagai admin berhasil! Redirecting...");
+        window.location.href = "dashboard.html"; // Redirect ke halaman dashboard admin
+      } else {
+        showError("Username atau password admin salah!");
+      }
+    } else if (loginType === "user") {
+      // Tidak perlu validasi untuk user
+      alert("Login sebagai user berhasil! Redirecting...");
+      window.location.href = "user-dashboard.html"; // Redirect ke halaman dashboard user
     }
   }, 2000); // Simulasi delay 2 detik
 });
