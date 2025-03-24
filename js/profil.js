@@ -42,11 +42,11 @@ document
 
 // Function to mark active nav link based on current URL
 function markActiveNavLink() {
-  const currentPage = window.location.pathname.split("/").pop();
+  const currentPage = window.location.pathname.split("/").pop(); // Get the current page filename
   const navLinks = document.querySelectorAll(".nav-links a");
 
   navLinks.forEach((link) => {
-    const linkHref = link.getAttribute("href").split("/").pop();
+    const linkHref = link.getAttribute("href").split("/").pop(); // Get the filename from href
     if (linkHref === currentPage) {
       link.classList.add("active");
     } else {
