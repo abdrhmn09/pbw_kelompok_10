@@ -63,4 +63,4 @@ pbw_kelompok_10/
 ---
 
 > Proyek ini dikembangkan untuk tujuan akademik dan pembelajaran.  
-> Hak cipta © 2025 - Kelompok 10, Pemrograman Berbasis Web - Universitas Anda.
+> Hak cipta © 2025 - Kelompok 10, Pemrograman Berbasis Web - Universitas Syiah Kuala.
